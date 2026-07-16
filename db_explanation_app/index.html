@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explicaciones de Base de Datos - Normalización y Diagramas</title>
+  
+  <!-- Font imports (Outfit and Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar glass">
+      <div class="sidebar-header">
+        <h1>Normalización BD</h1>
+        <p class="subtitle">Guía de Ejercicios Unidad IV</p>
+      </div>
+      
+      <!-- Sidebar Search Container -->
+      <div id="sidebar-search" class="search-container">
+        <label for="search-input" class="visually-hidden">Buscar ejercicios por nombre o palabra clave</label>
+        <input type="text" id="search-input" placeholder="Buscar ejercicio (ej. Nómina, Clínica)..." autocomplete="off">
+      </div>
+      
+      <!-- Exercise List -->
+      <nav aria-label="Lista de ejercicios">
+        <ul id="exercise-list" class="exercise-list">
+          <li class="exercise-item active" data-id="1" tabindex="0" role="button" aria-current="true">1. Nómina</li>
+          <li class="exercise-item" data-id="2" tabindex="0" role="button">2. Ajustes de Nómina</li>
+          <li class="exercise-item" data-id="3" tabindex="0" role="button">3. Orden de Compra</li>
+          <li class="exercise-item" data-id="4" tabindex="0" role="button">4. Clínica Médica</li>
+          <li class="exercise-item" data-id="5" tabindex="0" role="button">5. Consumos de Hotel</li>
+          <li class="exercise-item" data-id="6" tabindex="0" role="button">6. Normalización de Ventas</li>
+          <li class="exercise-item" data-id="7" tabindex="0" role="button">7. Centro de Investigación</li>
+          <li class="exercise-item" data-id="8" tabindex="0" role="button">8. Transacciones Bancarias</li>
+          <li class="exercise-item" data-id="9" tabindex="0" role="button">9. Pedidos de Supermercado</li>
+          <li class="exercise-item" data-id="10" tabindex="0" role="button">10. Mantenimiento de Aeronaves</li>
+          <li class="exercise-item" data-id="11" tabindex="0" role="button">11. Reparación de Electrodomésticos</li>
+          <li class="exercise-item" data-id="12" tabindex="0" role="button">12. Reserva de Laboratorio</li>
+          <li class="exercise-item" data-id="13" tabindex="0" role="button">13. Facturación de Restaurante</li>
+          <li class="exercise-item" data-id="14" tabindex="0" role="button">14. Cuentas por Pagar</li>
+        </ul>
+        <div id="no-results-message" class="no-results hidden" aria-live="polite">
+          No se encontraron ejercicios que coincidan con la búsqueda.
+        </div>
+      </nav>
+    </aside>
+    
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Tabs Navigation -->
+      <nav class="tabs-nav-container glass" aria-label="Pestañas de normalización y diagramas">
+        <div role="tablist" class="tabs-list">
+          <button id="tab-desc" class="nav-tab tab-button active" role="tab" aria-selected="true" aria-controls="content-area" tabindex="0">Descripción</button>
+          <button id="tab-1nf" class="nav-tab tab-button" role="tab" aria-selected="false" aria-controls="content-area" tabindex="0">1NF</button>
+          <button id="tab-2nf" class="nav-tab tab-button" role="tab" aria-selected="false" aria-controls="content-area" tabindex="0">2NF</button>
+          <button id="tab-3nf" class="nav-tab tab-button" role="tab" aria-selected="false" aria-controls="content-area" tabindex="0">3FN</button>
+          <button id="tab-er" class="nav-tab tab-button" role="tab" aria-selected="false" aria-controls="content-area" tabindex="0">Diagrama E-R</button>
+        </div>
+      </nav>
+      
+      <!-- Content Area Card -->
+      <section id="content-area" class="content-card glass" role="tabpanel" aria-labelledby="tab-desc">
+        <h2 id="exercise-title">Ejercicio 1: Nómina</h2>
+        
+        <!-- Tab Content Wrappers -->
+        <div class="tab-content-container">
+          <!-- Description Content -->
+          <div id="description-content" class="tab-pane active" aria-hidden="false">
+            <p>Este ejercicio modela el sistema de nómina de empleados de una empresa, analizando las relaciones entre empleados, cargos y departamentos, así como el cálculo de asignaciones y deducciones.</p>
+          </div>
+          
+          <!-- 1NF Content -->
+          <div id="content-1nf" class="tab-pane hidden" aria-hidden="true"></div>
+          
+          <!-- 2NF Content -->
+          <div id="content-2nf" class="tab-pane hidden" aria-hidden="true"></div>
+          
+          <!-- 3NF Content -->
+          <div id="content-3nf" class="tab-pane hidden" aria-hidden="true"></div>
+          
+          <!-- E-R Diagram Content -->
+          <div id="er-diagram-container" class="tab-pane hidden" aria-hidden="true">
+            <div class="diagram-canvas">
+              <svg id="er-diagram-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+                <!-- Default skeleton SVG will be overwritten dynamically by script.js -->
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Comparison Callout Box (always present/visible across tabs or outside tab panes) -->
+        <div class="comparison-box glass backdrop-blur" aria-label="Comparativa de diseño: Academia vs Industria">
+          <!-- Populated dynamically by script.js -->
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- Accessibility Live Announcer -->
+  <span id="search-results-announcer" class="visually-hidden" aria-live="polite"></span>
+  
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
